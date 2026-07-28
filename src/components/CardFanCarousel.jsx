@@ -229,6 +229,8 @@ function CardFanCarousel({ cards, onSelectImage }) {
 
   if (!totalCards) return null
 
+  const activeCard = cards[centerIndex]
+
   return (
     <div className="fan-carousel">
       <div className="fan-carousel__inner">
@@ -245,6 +247,9 @@ function CardFanCarousel({ cards, onSelectImage }) {
                 alt={card.alt || `Image ${index}`}
               />
               <span className="fan-card__caption">{card.caption}</span>
+              <div className="fan-card__reflection">
+                <img src={card.imgUrl} alt="" aria-hidden="true" />
+              </div>
             </div>
           ))}
         </div>
@@ -267,6 +272,13 @@ function CardFanCarousel({ cards, onSelectImage }) {
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
+        </div>
+      )}
+
+      {activeCard && (
+        <div className="fan-carousel__label">
+          <span className="fan-carousel__label-title">{activeCard.caption}</span>
+          <span className="fan-carousel__label-tag">{activeCard.tag}</span>
         </div>
       )}
     </div>

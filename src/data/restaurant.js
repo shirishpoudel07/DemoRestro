@@ -2,28 +2,28 @@ export const images = {
   exterior: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80',
   interior: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80',
   communalDining: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
-  breakfast: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80',
-  chickenBurger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80',
+  breakfast: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
+  chickenBurger: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80',
   friedPlatter: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80',
-  schnitzelSandwich: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80',
+  schnitzelSandwich: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80',
 }
 
 export const stockImages = {
-  pancakes: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=700&q=80',
+  pancakes: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=700&q=80',
   lassi: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=700&q=80',
   coffee: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80',
   tea: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=700&q=80',
   crepes: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?w=700&q=80',
-  dalBhat: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=700&q=80',
-  paratha: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=700&q=80',
-  fruitSalad: 'https://images.unsplash.com/photo-1478144592103-25e218a04891?w=700&q=80',
+  dalBhat: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&q=80',
+  paratha: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=700&q=80',
+  fruitSalad: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=80',
   lakeside: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80',
   sizzlingBrownie: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700&q=80',
   gulabJamun: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=700&q=80',
   iceCreamSundae: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=700&q=80',
   stickyToffee: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=700&q=80',
   tiramisu: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=700&q=80',
-  cheesecake: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=700&q=80',
+  cheesecake: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=700&q=80',
   lavaCake: 'https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?w=700&q=80',
 }
 
@@ -507,11 +507,8 @@ export const galleryImages = [
 export const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#popular', label: 'Popular' },
-  { href: '#about', label: 'About' },
   { href: '#experience', label: 'Our Space' },
   { href: '#menu', label: 'Menu' },
   { href: '#gallery', label: 'Gallery' },
-  { href: '#reviews', label: 'Reviews' },
-  { href: '#reserve', label: 'Reserve' },
   { href: '#contact', label: 'Contact' },
 ]
