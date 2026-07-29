@@ -65,15 +65,13 @@ function Reservation() {
     if (Object.keys(newErrors).length > 0) return
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+ const serviceId = "service_knv1l07"
+ const templateId = "template_3cyi48s"
+ const publicKey = "_dUUIl4rIbvgqHpHs"
 
-      console.log('EmailJS config:', { serviceId, templateId, publicKey: publicKey ? '***set***' : 'MISSING' })
-
-  await emailjs.send(
-  "service_knv1l07",
-  "template_3cyi48s",
+await emailjs.send(
+  serviceId,
+  templateId,
   {
     name: form.name,
     email: form.email,
@@ -82,12 +80,9 @@ function Reservation() {
     time: form.time,
     guests: form.guests,
     message: form.message || "None",
-    to_email: "shirishpoudel34@gmail.com",
   },
-  "_dUUIl4rIbvgqHpHs"
+  publicKey
 );
-
-      console.log('EmailJS result:', result)
       setSendError(null)
       setSubmitted(true)
       setTimeout(() => setSubmitted(false), 5000)
