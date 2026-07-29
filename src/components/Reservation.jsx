@@ -65,9 +65,9 @@ function Reservation() {
     if (Object.keys(newErrors).length > 0) return
 
     try {
- const serviceId = "service_knv1l07"
- const templateId = "template_3cyi48s"
- const publicKey = "_dUUIl4rIbvgqHpHs"
+const serviceId = "service_knv1l07";
+const templateId = "template_3cyi48s";
+const publicKey = "_dUUIl4rIbvgqHpHs";
 
 await emailjs.send(
   serviceId,
@@ -86,10 +86,13 @@ await emailjs.send(
       setSendError(null)
       setSubmitted(true)
       setTimeout(() => setSubmitted(false), 5000)
-    } catch (err) {
-      console.error('Email send failed:', err)
-      setSendError('Failed to send email. Please try again or call us.')
-    }
+ } catch (err) {
+  console.error("FULL ERROR:", err);
+  alert(
+    `Status: ${err.status}\nText: ${err.text || err.message || "No message"}`
+  );
+  setSendError("Failed to send email. Please try again or call us.");
+}
 
     setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '2', message: '' })
     setTouched({})
