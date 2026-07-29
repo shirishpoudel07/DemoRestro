@@ -71,22 +71,20 @@ function Reservation() {
 
       console.log('EmailJS config:', { serviceId, templateId, publicKey: publicKey ? '***set***' : 'MISSING' })
 
-      const result = await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          to_email: 'shirishpoudel34@gmail.com',
-          title: 'New Reservation',
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          date: form.date,
-          time: form.time,
-          guests: form.guests,
-          message: form.message || 'None',
-        },
-        publicKey,
-      )
+    await emailjs.send(
+  "service_knv1l07",
+  "template_3cyi48s",
+  {
+    name: form.name,
+    email: form.email,
+    phone: form.phone,
+    date: form.date,
+    time: form.time,
+    guests: form.guests,
+    message: form.message || "None",
+  },
+  "_dUUIl4rIbvgqHpHs"
+);
 
       console.log('EmailJS result:', result)
       setSendError(null)
