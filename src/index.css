@@ -2628,6 +2628,18 @@ html.lightbox-open {
   display:flex
 }
 
+.reservation__error-msg {
+  background:#ffffff12;
+  border-radius:var(--radius-md);
+  border:1px solid #ef444455;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  margin-top:16px;
+  display:flex;
+  color:#ef4444
+}
+
 .reservation__success svg {
   color:#10b981;
   flex-shrink:0;

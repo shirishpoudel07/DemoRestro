@@ -27,6 +27,7 @@ function Reservation() {
   })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [sendError, setSendError] = useState(null)
   const [touched, setTouched] = useState({})
   const formRef = useRef(null)
 
@@ -68,24 +69,26 @@ function Reservation() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-         
-  name: form.name,
-  email: form.email,
-  phone: form.phone,
-  date: form.date,
-  time: form.time,
-  guests: form.guests,
-  message: form.message || 'None',
-
+          to_email: 'shirishpoudel34@gmail.com',
+          title: 'New Reservation',
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          date: form.date,
+          time: form.time,
+          guests: form.guests,
+          message: form.message || 'None',
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
+      setSendError(null)
     } catch (err) {
       console.error('Email send failed:', err)
+      setSendError('Failed to send email. Please try again or call us.')
     }
 
     setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    setTimeout(() => { setSubmitted(false); setSendError(null) }, 5000)
     setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '2', message: '' })
     setTouched({})
     setErrors({})
@@ -227,7 +230,7 @@ function Reservation() {
             Confirm Reservation
           </motion.button>
 
-          {submitted && (
+          {submitted && !sendError && (
             <motion.div
               className="reservation__success"
               initial={{ opacity: 0, y: 10 }}
@@ -238,6 +241,17 @@ function Reservation() {
                 <strong>Request sent!</strong>
                 <span>We&apos;ll confirm your reservation shortly.</span>
               </div>
+            </motion.div>
+          )}
+
+          {sendError && (
+            <motion.div
+              className="reservation__error-msg"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <HiExclamationCircle />
+              <span>{sendError}</span>
             </motion.div>
           )}
         </motion.form>
