@@ -6,30 +6,18 @@ import { popularDishes } from '../data/restaurant'
 function PopularDishes({ onSelectDish }) {
   const trackRef = useRef(null)
   const [expandedId, setExpandedId] = useState(null)
-  const longPressTimer = useRef(null)
-  const isLongPress = useRef(false)
 
   const scroll = (dir) => {
-    trackRef.current?.scrollBy({ left: dir * 340, behavior: 'smooth' })
+    const track = trackRef.current
+    if (!track) return
+    const card = track.querySelector('.popular__card')
+    if (!card) return
+    const scrollAmount = card.offsetWidth + 18
+    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' })
   }
 
   const toggleExpand = useCallback((id) => {
     setExpandedId((prev) => (prev === id ? null : id))
-  }, [])
-
-  const handleTouchStart = useCallback((id) => {
-    isLongPress.current = false
-    longPressTimer.current = setTimeout(() => {
-      isLongPress.current = true
-      toggleExpand(id)
-    }, 2000)
-  }, [toggleExpand])
-
-  const handleTouchEnd = useCallback(() => {
-    if (longPressTimer.current) {
-      clearTimeout(longPressTimer.current)
-      longPressTimer.current = null
-    }
   }, [])
 
   return (
@@ -41,7 +29,7 @@ function PopularDishes({ onSelectDish }) {
             Most <em>Popular</em> Dishes
           </h2>
           <p className="section-desc text-readable">
-            Click a dish to read the full story — on mobile, touch and hold for 2 seconds.
+            Click a card to read the full story — swipe or use the arrows to browse.
           </p>
         </div>
 
@@ -50,7 +38,7 @@ function PopularDishes({ onSelectDish }) {
             type="button"
             className="popular__nav popular__nav--prev"
             onClick={() => scroll(-1)}
-            aria-label="Previous"
+            aria-label="Previous dish"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -62,12 +50,7 @@ function PopularDishes({ onSelectDish }) {
               <motion.article
                 key={dish.id}
                 className={`popular__card ${expandedId === dish.id ? 'popular__card--expanded' : ''}`}
-                onClick={() => {
-                  if (!isLongPress.current) toggleExpand(dish.id)
-                }}
-                onTouchStart={() => handleTouchStart(dish.id)}
-                onTouchEnd={handleTouchEnd}
-                onTouchMove={handleTouchEnd}
+                onClick={() => toggleExpand(dish.id)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -113,7 +96,7 @@ function PopularDishes({ onSelectDish }) {
                 <motion.button
                   type="button"
                   className="popular__card-cta"
-                  onClick={() => onSelectDish?.(dish)}
+                  onClick={(e) => { e.stopPropagation(); onSelectDish?.(dish) }}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -127,7 +110,7 @@ function PopularDishes({ onSelectDish }) {
             type="button"
             className="popular__nav popular__nav--next"
             onClick={() => scroll(1)}
-            aria-label="Next"
+            aria-label="Next dish"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

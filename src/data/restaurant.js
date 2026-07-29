@@ -59,7 +59,7 @@ export const restaurant = {
   rank: '#1 in Downtown',
   paymentMethods: ['Visa', 'Mastercard', 'Amex', 'Discover'],
   about:
-    'Welcome to Demo Bistro — a warm and inviting space where great food meets genuine hospitality. Our menu features a hand-picked selection of breakfast classics, hearty mains, and indulgent desserts made from fresh, quality ingredients. Whether you are grabbing a quick coffee, enjoying a leisurely lunch, or celebrating with friends, our cozy atmosphere and friendly staff make every visit memorable.',
+    'Demo Bistro is a warm space where great food meets genuine hospitality. From breakfast classics to hearty mains, every dish is made with fresh, quality ingredients in a cozy atmosphere.',
   stats: [
     { value: '4.8', label: 'Guest Rating' },
     { value: '320+', label: 'Happy Reviews' },

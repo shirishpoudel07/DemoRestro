@@ -68,14 +68,15 @@ function Reservation() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone,
-          date: form.date,
-          time: form.time,
-          guests: form.guests,
-          message: form.message || 'None',
-          to_email: 'aieducare07@gmail.com',
+         
+  name: form.name,
+  email: form.email,
+  phone: form.phone,
+  date: form.date,
+  time: form.time,
+  guests: form.guests,
+  message: form.message || 'None',
+
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )

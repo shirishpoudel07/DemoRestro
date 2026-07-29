@@ -15,10 +15,10 @@ const FAN_POSITIONS = [
 ]
 
 function getResponsiveMultiplier(width) {
-  if (width < 480) return 0.28
-  if (width < 640) return 0.38
-  if (width < 768) return 0.5
-  if (width < 1024) return 0.75
+  if (width < 480) return 0.4
+  if (width < 640) return 0.5
+  if (width < 768) return 0.6
+  if (width < 1024) return 0.8
   return 1.0
 }
 
