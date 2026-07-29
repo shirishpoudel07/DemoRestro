@@ -65,9 +65,15 @@ function Reservation() {
     if (Object.keys(newErrors).length > 0) return
 
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      console.log('EmailJS config:', { serviceId, templateId, publicKey: publicKey ? '***set***' : 'MISSING' })
+
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
         {
           to_email: 'shirishpoudel34@gmail.com',
           title: 'New Reservation',
@@ -79,16 +85,18 @@ function Reservation() {
           guests: form.guests,
           message: form.message || 'None',
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        publicKey,
       )
+
+      console.log('EmailJS result:', result)
       setSendError(null)
+      setSubmitted(true)
+      setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
       console.error('Email send failed:', err)
       setSendError('Failed to send email. Please try again or call us.')
     }
 
-    setSubmitted(true)
-    setTimeout(() => { setSubmitted(false); setSendError(null) }, 5000)
     setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '2', message: '' })
     setTouched({})
     setErrors({})
