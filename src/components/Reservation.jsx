@@ -72,15 +72,16 @@ const publicKey = "_dUUIl4rIbvgqHpHs";
 await emailjs.send(
   serviceId,
   templateId,
-  {
-    name: form.name,
-    email: form.email,
-    phone: form.phone,
-    date: form.date,
-    time: form.time,
-    guests: form.guests,
-    message: form.message || "None",
-  },
+ {
+  name: form.name,
+  email: form.email,
+  phone: form.phone,
+  date: form.date,
+  time: form.time,
+  guests: form.guests,
+  message: form.message || "None",
+  to_email: "shirishpoudel34@gmail.com",
+},
   publicKey
 );
       setSendError(null)
