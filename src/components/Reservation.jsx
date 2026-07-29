@@ -71,7 +71,7 @@ function Reservation() {
 
       console.log('EmailJS config:', { serviceId, templateId, publicKey: publicKey ? '***set***' : 'MISSING' })
 
-    await emailjs.send(
+  await emailjs.send(
   "service_knv1l07",
   "template_3cyi48s",
   {
@@ -82,6 +82,7 @@ function Reservation() {
     time: form.time,
     guests: form.guests,
     message: form.message || "None",
+    to_email: "shirishpoudel34@gmail.com",
   },
   "_dUUIl4rIbvgqHpHs"
 );
