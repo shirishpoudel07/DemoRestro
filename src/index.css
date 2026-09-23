@@ -130,7 +130,7 @@ html.lightbox-open {
 }
 
 .section {
-  padding:72px 0
+  padding:120px 0
 }
 
 .section-header {
@@ -2850,7 +2850,7 @@ html.lightbox-open {
 .footer {
   background:var(--color-bg-dark);
   color:#ffffffb3;
-  padding:72px 0 0
+  padding:120px 0 0
 }
 
 .footer__inner {
@@ -4174,4 +4174,188 @@ html.lightbox-open {
   }
 }
 
+
+
+/* DARK MODE OVERRIDES */
+html.dark {
+  --color-primary: #eae4da;
+  --color-primary-hover: #ffffff;
+  --color-primary-deep: #f3f0ea;
+  --color-accent: #c9a84c;
+  --color-accent-dark: #a8883a;
+  --color-gold: #d4b05a;
+  --color-terracotta: #c17543;
+  --color-sage: #8a9a8a;
+  --color-text: #f3f0ea;
+  --color-text-light: #a39e98;
+  --color-bg: #0a1118;
+  --color-bg-warm: #111d2b;
+  --color-bg-dark: #060b0f;
+  --color-bg-blue: #0f1721;
+  --color-white: #ffffff;
+  --color-cream: #172433;
+  --color-border: #1e3045;
+  --color-navbar: #0a1118;
+}
+
+/* Fix down elements that have hardcoded light gradients */
+html.dark section,
+html.dark .section {
+  background: var(--color-bg) !important;
+}
+
+html.dark .card,
+html.dark .menu-card,
+html.dark .testimonials__card,
+html.dark .popular__card,
+html.dark .fan-card,
+html.dark .reservation__form {
+  background: var(--color-bg-warm) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+html.dark .menu-card:hover,
+html.dark .testimonials__card:hover,
+html.dark .popular__card:hover,
+html.dark .fan-card:hover {
+  background: #1a2738 !important;
+  border-color: rgba(201, 168, 76, 0.2) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(201, 168, 76, 0.05) !important;
+}
+
+html, body {
+  transition: background-color var(--transition), color var(--transition);
+}
+
+
+.navbar__theme-toggle {
+  color: var(--color-white);
+  font-size: 1.3rem;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  background: transparent;
+  cursor: pointer;
+}
+
+.navbar__theme-toggle:hover {
+  background: #ffffff15;
+  color: var(--color-accent);
+}
+
+
+/* GLOBAL UI/UX ENHANCEMENTS */
+.btn:active, button:active, .hero__btn:active {
+  transform: scale(0.96) !important;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero__slide--active .hero__slide-plate img {
+  animation: spinSlow 30s linear infinite;
+}
+
+.menu-card__image, .popular__card-image img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.menu-card:hover .menu-card__image, .popular__card:hover .popular__card-image img {
+  transform: scale(1.08) !important;
+}
+
+.navbar--scrolled {
+  backdrop-filter: blur(32px) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+}
+
+
+/* DARK MODE COMPONENT FIXES */
+html.dark .menu-page__category--alt {
+  background: var(--color-bg-dark) !important;
+}
+
+html.dark .menu-page__nav-chip,
+html.dark .gallery__filter,
+html.dark .gallery-teaser__box,
+html.dark .menu-teaser__box {
+  background: var(--color-bg-warm) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+html.dark .menu-page__nav-chip:hover,
+html.dark .gallery__filter:hover,
+html.dark .gallery__filter--active {
+  background: var(--color-accent) !important;
+  color: #111 !important;
+}
+
+html.dark .menu-modal__content,
+html.dark .gallery__lightbox-content {
+  background: var(--color-bg-warm) !important;
+}
+
+html.dark .btn--outline,
+html.dark .gallery-page__back,
+html.dark .menu-page__back-btn {
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+html.dark .btn--outline:hover,
+html.dark .gallery-page__back:hover,
+html.dark .menu-page__back-btn:hover {
+  background: var(--color-bg-warm) !important;
+}
+
+html.dark .gallery-page {
+  background: var(--color-bg) !important;
+}
+
+
+/* FORCE ALTERNATING DARK BACKGROUNDS & REMOVE ALL LIGHT BLEED */
+html.dark .about,
+html.dark .menu-teaser,
+html.dark .testimonials,
+html.dark .contact,
+html.dark .menu-page__body {
+  background: var(--color-bg-dark) !important;
+}
+
+html.dark .popular,
+html.dark .experience,
+html.dark .gallery-teaser,
+html.dark .reservation,
+html.dark .menu-page.section {
+  background: var(--color-bg) !important;
+}
+
+html.dark .footer {
+  background: #04080b !important;
+}
+
+/* Aggressively catch any remaining light backgrounds on interactive elements */
+html.dark input, 
+html.dark textarea, 
+html.dark select {
+  background: #0f1721 !important;
+  color: var(--color-text) !important;
+  border-color: #1e3045 !important;
+}
+
+html.dark .btn {
+  color: var(--color-text);
+}
+
+html.dark .btn--primary {
+  color: #111 !important;
+}
 
