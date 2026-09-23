@@ -69,9 +69,9 @@ function Reservation() {
     setSendError(null)
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = "service_knv1l07";
+      const templateId = "template_3cyi48s";
+      const publicKey = "_dUUIl4rIbvgqHpHs";
 
       await emailjs.send(
         serviceId,
