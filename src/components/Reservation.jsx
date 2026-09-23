@@ -28,6 +28,7 @@ function Reservation() {
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [sendError, setSendError] = useState(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [touched, setTouched] = useState({})
   const formRef = useRef(null)
 
@@ -64,40 +65,41 @@ function Reservation() {
     setTouched({ name: true, email: true, phone: true, date: true, time: true })
     if (Object.keys(newErrors).length > 0) return
 
+    setIsSubmitting(true)
+    setSendError(null)
+
     try {
-const serviceId = "service_knv1l07";
-const templateId = "template_3cyi48s";
-const publicKey = "_dUUIl4rIbvgqHpHs";
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-await emailjs.send(
-  serviceId,
-  templateId,
- {
-  name: form.name,
-  email: form.email,
-  phone: form.phone,
-  date: form.date,
-  time: form.time,
-  guests: form.guests,
-  message: form.message || "None",
-  to_email: "shirishpoudel34@gmail.com",
-},
-  publicKey
-);
-      setSendError(null)
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          date: form.date,
+          time: form.time,
+          guests: form.guests,
+          message: form.message || "None",
+          to_email: "shirishpoudel34@gmail.com",
+        },
+        { publicKey }
+      );
+
       setSubmitted(true)
+      setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '2', message: '' })
+      setTouched({})
+      setErrors({})
       setTimeout(() => setSubmitted(false), 5000)
- } catch (err) {
-  console.error("FULL ERROR:", err);
-  alert(
-    `Status: ${err.status}\nText: ${err.text || err.message || "No message"}`
-  );
-  setSendError("Failed to send email. Please try again or call us.");
-}
-
-    setForm({ name: '', email: '', phone: '', date: '', time: '', guests: '2', message: '' })
-    setTouched({})
-    setErrors({})
+    } catch (err) {
+      console.error("FULL ERROR:", err);
+      setSendError(err?.text || "Failed to send email. Please try again or call us.");
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const today = new Date().toISOString().split('T')[0]
@@ -230,10 +232,11 @@ await emailjs.send(
           <motion.button
             type="submit"
             className="btn btn--primary btn--lg reservation__submit"
+            disabled={isSubmitting}
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
           >
-            Confirm Reservation
+            {isSubmitting ? 'Sending...' : 'Confirm Reservation'}
           </motion.button>
 
           {submitted && !sendError && (
